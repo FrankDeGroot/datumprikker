@@ -1,0 +1,5 @@
+﻿<button class="btn" ng-click="toggle()" ng-class="{ 'btn-warning': debugMode }">Feedback</button>
+<form name="feedbackForm" ng-show="visible" ng-submit="submit()">
+    <textarea class="form-control" ng-model="text"></textarea>
+    <button type="submit" class="btn">Send</button>
+</form>

@@ -1,0 +1,19 @@
+﻿<div class="hero-unit">
+    <h1>Invitation</h1>
+    <p>Select contacts to invite.</p>
+    <form>
+        <ul>
+            <li ng-repeat="invitee in invitees">
+                <label>
+                    <input type="checkbox"
+                           ng-model="invitee.checked"
+                           ng-change="selectInvitee()" />
+                    {{invitee | contactName}}
+                </label>
+            </li>
+        </ul>
+
+        Number of selected contacts: {{participants}}
+        <button type="submit" class="btn btn-primary">Nodig uit!</button>
+    </form>
+</div>

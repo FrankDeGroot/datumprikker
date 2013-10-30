@@ -1,0 +1,56 @@
+<feedback></feedback>
+<feedback debug="true"></feedback>
+<form ng-submit="saveContact()" novalidate name="newContactForm">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group" ng-class="{ 'has-error': newContactForm.voornaam.$dirty && newContactForm.voornaam.$invalid }">
+                <label class="control-label sr-only" for="voornaam">Voornaam:</label>
+                <input name="voornaam" type="text" ng-model="newContact.voornaam" placeholder="Voornaam" class="form-control" required>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': newContactForm.achternaam.$dirty && newContactForm.achternaam.$invalid }">
+                <label class="control-label sr-only" for="achternaam">Achternaam:</label>
+                <input name="achternaam" type="text" ng-model="newContact.achternaam" placeholder="Achternaam" class="form-control" required>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': newContactForm.email.$dirty && newContactForm.email.$invalid }">
+                <label class="control-label sr-only" for="email">Email:</label>
+                <input name="email" type="email" ng-model="newContact.email" placeholder="Email" class="form-control" required>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <button type="submit" class="btn btn-primary" ng-disabled="newContactForm.$invalid">Voeg toe</button>
+        </div>
+    </div>
+</form>
+<table class="table">
+    <tr>
+        <th>Naam</th>
+        <th>E-mailadres</th>
+        <th></th>
+    </tr>
+    <tr ng-repeat="contact in contacten">
+        <td ng-hide="contact.editMode">{{contact | contactName}}</td>
+        <td ng-hide="contact.editMode">{{contact.email}}</td>
+        <td ng-hide="contact.editMode">
+            <button class="btn" ng-click="contact.editMode = true">Wijzig</button>
+            <button class="btn btn-danger" ng-click="deleteContact(contact)">Verwijder</button>
+        </td>
+        <td ng-show="contact.editMode">
+            <input type="text" ng-model="contact.voornaam" placeholder="Voornaam" />
+            <input type="text" ng-model="contact.achternaam" placeholder="Achternaam" />
+        </td>
+        <td ng-show="contact.editMode">
+            <input type="email" ng-model="contact.email" placeholder="E-mail" />
+        </td>
+        <td ng-show="contact.editMode">
+            <button class="btn" ng-click="contact.editMode = false">Klaar</button>
+        </td>
+    </tr>
+</table>
+<div class="panel panel-danger" ng-show="message">
+    <div class="panel-heading">
+        <h3 class="panel-title">Message</h3>
+    </div>
+    <div class="panel-body">
+        {{message}}
+    </div>
+</div>
