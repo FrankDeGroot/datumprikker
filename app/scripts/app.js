@@ -10,9 +10,6 @@ angular.module('datumprikkerApp', [
     }).when('/invite', {
         templateUrl: 'views/invite.html',
         controller: 'inviteCtrl'
-    }).when('/lala', {
-        templateUrl: 'views/lala.html',
-        controller: 'lalaCtrl'
     }).otherwise({
         redirectTo: '/'
     });

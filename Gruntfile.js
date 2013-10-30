@@ -270,7 +270,10 @@ module.exports = function (grunt) {
             },
             e2e: {
                 configFile: 'karma-e2e.conf.js',
-                singleRun: true
+                singleRun: true,
+                proxies: {
+                    '/': 'http://localhost:9000/'
+                }
             }
         },
         cdnify: {

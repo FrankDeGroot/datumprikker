@@ -5,7 +5,7 @@ angular.module('datumprikkerApp').directive('feedback', function () {
         restrict: 'E',
         templateUrl: 'views/directives/feedback.html',
         scope: { debug: '@' },
-        controller: function ($scope, $element, $attrs, $transclude, $location) {
+        controller: function ($scope, $element, $attrs, $transclude, $location, $window) {
             $scope.debugMode = $scope.debug !== undefined;
             $scope.visible = false;
             $scope.toggle = function () {
@@ -13,7 +13,7 @@ angular.module('datumprikkerApp').directive('feedback', function () {
             };
             $scope.submit = function () {
                 if ($scope.debug !== undefined) {
-                    alert('You provided feedback: \'' + $scope.text + '\' ' + ' on location: ' + $location.path() + '.');
+                    $window.alert('You provided feedback: \'' + $scope.text + '\' ' + ' on location: ' + $location.path() + '.');
                 }
             };
         },
